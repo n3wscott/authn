@@ -1,0 +1,11 @@
+[[constraint]]
+  name = "github.com/coreos/go-oidc"
+  version = "2.2.1"
+
+[[constraint]]
+  name = "github.com/kelseyhightower/envconfig"
+  version = "1.4.0"
+
+[prune]
+  go-tests = true
+  unused-packages = true

@@ -1,0 +1,2 @@
+baseImageOverrides:
+  github.com/n3wscott/authn/cmd/whoami/: quay.io/oauth2-proxy/oauth2-proxy

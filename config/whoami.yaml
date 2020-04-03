@@ -1,0 +1,17 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: whoami
+spec:
+  template:
+    spec:
+      containers:
+        - image: ko://github.com/n3wscott/authn/cmd/whoami/
+          volumeMounts:
+            - name: proxy-config
+              mountPath: /etc/proxy-config/
+              readOnly: true
+      volumes:
+        - secret:
+            secretName: whoami-proxy-config
+          name: proxy-config
