@@ -38,7 +38,7 @@ Only authenticated requests will reach `$APP_PORT`.
 1. Make a secret from these files, like:
 
    ```shell
-   kubectl create secret generic whoami-proxy-config --from-file=./config/oauth2_proxy.cfg --from-file=./config/oicd_client_id --from-file=./config/oicd_issuer
+   kubectl create secret generic whoami-proxy-config --from-file=./config/secrets/oauth2_proxy.cfg --from-file=./config/secrets/oicd_client_id --from-file=./config/secrets/oicd_issuer
    ```
 
 1. Confirm the base image contains `quay.io/oauth2-proxy/oauth2-proxy` as
