@@ -2,17 +2,29 @@ package oauth2
 
 import (
 	"context"
-	"github.com/coreos/go-oidc"
-	"github.com/kelseyhightower/envconfig"
 	"io/ioutil"
 	"net/http"
+	"os"
 	"path/filepath"
+
+	"github.com/coreos/go-oidc"
+	"github.com/kelseyhightower/envconfig"
 )
 
+const (
+	defaultAppPort = "8181"
+)
+
+func init() {
+	appPort := os.Getenv("APP_PORT")
+	if appPort == "" {
+		_ = os.Setenv("APP_PORT", defaultAppPort)
+	}
+}
+
 type envConfig struct {
-	Port       string `envconfig:"PORT" default:"8080"` // TODO: need to fix up the config with this port if it is not 8080
-	AppPort    string `envconfig:"APP_PORT" default:"8181"`
-	ConfigPath string `envconfig:"CONFIG_ROOT" default:"/etc/proxy-config/"`
+	Port        string `envconfig:"PORT" default:"8080"` // TODO: need to fix up the config with this port if it is not 8080
+	ConfigPath  string `envconfig:"CONFIG_ROOT" default:"/etc/proxy-config/"`
 	OAuth2Proxy string `envconfig:"OAUTH_PROXY_PATH" default:"/bin/oauth2_proxy"`
 }
 
