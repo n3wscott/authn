@@ -30,8 +30,8 @@ type envConfig struct {
 
 const (
 	OAuth2ProxyCfg = "oauth2_proxy.cfg"
-	IssuerName     = "oicd_issuer"
-	ClientIDName   = "oicd_client_id"
+	IssuerName     = "oidc_issuer"
+	ClientIDName   = "oidc_client_id"
 )
 
 func ReadIssuer(root string) (string, error) {
