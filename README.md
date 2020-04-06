@@ -33,8 +33,8 @@ Only authenticated requests will reach `$APP_PORT`.
 
 1. Fill in [`oauth2_proxy.cfg`](./config/secrets/oauth2_proxy.cfg) with the
    correct settings.
-1. Fill in [`oicd_client_id`](./config/secrets/oicd_client_id) and
-   [`oicd_issuer`](./config/secrets/oicd_issuer) based on the provider selected.
+1. Fill in [`oidc_client_id`](./config/secrets/oidc_client_id) and
+   [`oidc_issuer`](./config/secrets/oidc_issuer) based on the provider selected.
 1. Make a secret from these files, like:
 
    ```shell
