@@ -2,6 +2,7 @@ package oauth2
 
 import (
 	"context"
+	"fmt"
 	"github.com/coreos/go-oidc"
 	"net/http"
 	"strings"
@@ -18,6 +19,7 @@ func Middleware(ctx context.Context, wrapped http.Handler, verifier *oidc.IDToke
 		token, err := verifier.Verify(r.Context(), strings.TrimPrefix(authZHeader, "Bearer "))
 		if err != nil {
 			http.Error(w, "invalid token", http.StatusUnauthorized)
+			fmt.Println(err.Error())
 			return
 		}
 

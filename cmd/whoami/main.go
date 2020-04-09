@@ -26,7 +26,7 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		user := oauth2.AuthenticatedUser(r.Context())
-		_, _ = w.Write([]byte(fmt.Sprintf("Hello %s (%s)!", user.Name, user.Email)))
+		_, _ = w.Write([]byte(fmt.Sprintf("Hello %s, (%s)!", user.Name, user.Email)))
 	})
 
 	log.Fatal(http.ListenAndServe(":"+env.AppPort, oauth2.NewOrDie(ctx, mux)))
