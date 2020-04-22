@@ -14,7 +14,10 @@ type User struct {
 }
 
 func AuthenticatedUser(ctx context.Context) *User {
-	return ctx.Value(&userKey).(*User)
+	if user, ok := ctx.Value(&userKey).(*User); ok {
+		return user
+	}
+	return nil
 }
 
 func WithAuthenticatedUser(ctx context.Context, user *User) context.Context {
